@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #timer {
+            font-size: 48px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Таймер відліку</h1>
+<div id="timer">01:27</div>
+
+<script>
+    let time = 87;
+
+    const myTimer = document.getElementById('timer');
+
+    function updateTimer(){
+        const minutes = Math.floor(time/60);
+        const seconds = time % 60;
+
+        const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        myTimer.textContent = formattedTime;
+
+        if(time > 0){
+            time--;
+        }else{
+            clearInterval(timerInterval);
+        }
+    }
+    const timerInterval = setInterval(updateTimer, 1000);
+</script>
+</body>
+</html>
